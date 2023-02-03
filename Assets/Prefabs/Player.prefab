@@ -51,7 +51,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -253,6 +253,7 @@ MonoBehaviour:
   speed: 5
   xp: 0
   health: 100
+  level: 1
   footSteps: {fileID: 1930236317739398175}
 --- !u!50 &3834085663530818665
 Rigidbody2D:
@@ -274,7 +275,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!61 &3834085663530818664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -322,6 +323,7 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 64
+  axeSounds: {fileID: 3763697041261710895}
 --- !u!114 &1121520939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health_Stats: {fileID: 0}
   stamina_Stats: {fileID: 0}
+  level_Text: {fileID: 0}
 --- !u!1 &3858941061992432541
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,13 +384,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 200
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

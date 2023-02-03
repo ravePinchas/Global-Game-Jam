@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackLocation;
     public float attackRange;
     public LayerMask enemies;
+    public RandomSound axeSounds;
 
 
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
             
             Instantiate(axe, transform.position, Quaternion.identity);
             isAttack = true;
+            axeSounds.PlayRandomSound();
         }
 
             if (Input.GetMouseButtonDown(1))
