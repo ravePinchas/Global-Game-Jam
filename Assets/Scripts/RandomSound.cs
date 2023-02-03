@@ -25,6 +25,14 @@ public class RandomSound : MonoBehaviour
         {
             audioSource.clip = sounds[Random.Range(0, sounds.Count)];
             audioSource.Play();
+
+            //play the sound at faster rate
+            audioSource.pitch = Random.Range(1.5f, 2f);
+
+            audioSource.volume = 0.4f;
+            
+
+
         }
     }
 }

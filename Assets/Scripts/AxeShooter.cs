@@ -44,6 +44,11 @@ public class AxeShooter : MonoBehaviour
             rb.velocity = direction2 * speed;
             moveBack = true;
         }
+
+        //rotate the axe on throw
+
+        transform.Rotate(0, 0, 1000 * Time.deltaTime);
+
     }
 
     
