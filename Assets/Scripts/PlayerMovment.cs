@@ -9,7 +9,8 @@ public class PlayerMovment : MonoBehaviour
     public float speed = 5f;
     Vector3 vec;
     private Transform playerTransform;
-    public float xp = 0f;    
+    public float xp = 0f;
+    public float health = 100f;
 
     public RandomSound footSteps;
 
@@ -54,7 +55,8 @@ public class PlayerMovment : MonoBehaviour
             if (Vector3.Distance(transform.position, xp.transform.position) < 2f)
             {
                 Destroy(xp);
-                this.xp += 1;
+                this.xp += 10;
+                
             }
         }
     }

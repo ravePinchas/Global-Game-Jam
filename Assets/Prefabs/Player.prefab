@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 3834085663530818665}
   - component: {fileID: 3834085663530818664}
   - component: {fileID: 1121520933}
+  - component: {fileID: 1121520939}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  xp: 0
   footSteps: {fileID: 1930236317739398175}
 --- !u!50 &3834085663530818665
 Rigidbody2D:
@@ -312,6 +314,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axe: {fileID: 8024493763116142589, guid: 668d9f34462cefe49a986990bd2cfe35, type: 3}
   isAttack: 0
+  attackTime: 1
+  startTimeAttack: 0.3
+  attackLocation: {fileID: 6381714636896791862}
+  attackRange: 0.19
+  enemies:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1121520939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834085663530818658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83504f48596f6c74885378ffb49284e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health_Stats: {fileID: 0}
+  stamina_Stats: {fileID: 0}
 --- !u!1 &3858941061992432541
 GameObject:
   m_ObjectHideFlags: 0

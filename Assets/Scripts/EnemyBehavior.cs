@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -11,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] public GameObject xp;
 
-
+    Stopwatch stopwatch = new Stopwatch();
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,6 +37,27 @@ public class EnemyBehavior : MonoBehaviour
             //instantiates the xp prefab
             //Destroy(gameObject);
         
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            reduceHealth();
+        }
+    }
+
+    void reduceHealth()
+    {
+        //do for X Seconds
+
+        stopwatch.Start();
+        if (stopwatch.ElapsedMilliseconds > 1000)
+        {
+            UnityEngine.Debug.Log("Player hit");
+            stopwatch.Reset();
+            FindObjectOfType<PlayerMovment>().health -= 10;
         }
     }
 }
