@@ -17,7 +17,9 @@ public class AdvanceLevelCheat : MonoBehaviour
             if (currSceneName.StartsWith(levelNamePrefix))
             {
                 changeLevel = true;
-                levelNumber = int.Parse(currSceneName.Substring(levelNamePrefix.Length));
+                string levelNumberString = currSceneName.Substring(levelNamePrefix.Length);
+                levelNumber = int.Parse(levelNumberString);
+                ++levelNumber;
             }
             if (currSceneName.Equals("SampleScene"))
             {
@@ -25,7 +27,7 @@ public class AdvanceLevelCheat : MonoBehaviour
             }
             if (changeLevel)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Level " + levelNumber);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(levelNamePrefix + levelNumber);
             }
         }
     }
