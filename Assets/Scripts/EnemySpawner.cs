@@ -2,14 +2,24 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // assign the enemy prefab in the inspector
-    public Transform[] spawnPoints; // assign the spawn points in the inspector
+    public GameObject enemyPrefab;
+    public Enemy enemy;
+    public Transform[] spawnPoints;
+    
+    private void SpawnEnemy()
+    {
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        Transform spawnPoint = spawnPoints[spawnIndex];
+
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        EnemyBehavior enemyBehaviour = newEnemy.GetComponent<EnemyBehavior>();
+        enemyBehaviour.enemy = enemy;
+    }
+
 
     private void Start()
     {
-        foreach (Transform spawnPoint in spawnPoints)
-        {
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
+        InvokeRepeating("SpawnEnemy", 0f, 1f);
+
     }
 }
