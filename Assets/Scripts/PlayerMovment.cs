@@ -8,8 +8,6 @@ public class PlayerMovment : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 5f;
     Vector3 vec;
-    [SerializeField] GameObject axe;
-    public bool isAttack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +23,5 @@ public class PlayerMovment : MonoBehaviour
         vec.y += Input.GetAxis("Vertical") * Time.deltaTime * speed;
         vec.z = 0;
         transform.localPosition = vec;
-
-        if (Input.GetMouseButtonDown(0) && !isAttack)
-        {
-            isAttack = true;
-            Instantiate(axe, transform.localPosition, Quaternion.identity);
-        }
     }
 }

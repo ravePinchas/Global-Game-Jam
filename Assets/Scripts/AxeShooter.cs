@@ -6,7 +6,7 @@ public class AxeShooter : MonoBehaviour
 {
     private Vector3 startPosition;
     Rigidbody2D rb;
-    public float speed = 7f;
+    public float speed = 10f;
     bool moveBack = false;
     bool startAxe = true;
     GameObject player;
@@ -17,11 +17,12 @@ public class AxeShooter : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
+        player = GameObject.Find("Player");
     }
 
     private void Update()
     {
-        player = GameObject.Find("Player");
+
         if (startAxe)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -50,7 +51,7 @@ public class AxeShooter : MonoBehaviour
         if (moveBack && collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            player.GetComponent<PlayerMovment>().isAttack = false;
+            player.GetComponent<PlayerAttack>().isAttack = false;
         }
     }
 }
