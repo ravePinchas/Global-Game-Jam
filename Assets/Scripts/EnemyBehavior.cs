@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if (enemy.hp <= 0)
         {
-            // enemy is defeated
+            Destroy(gameObject);
         }
 
     }

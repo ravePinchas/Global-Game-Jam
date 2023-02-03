@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy")]
 public class Enemy : ScriptableObject
 {
-    public int hp;
-    public int attack;
-    public Sprite sprite;
+   [SerializeField] public int hp;
+    [SerializeField] public int attack;
+    [SerializeField] public Sprite sprite;
 }

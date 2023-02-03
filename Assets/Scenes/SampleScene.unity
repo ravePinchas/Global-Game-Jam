@@ -207,6 +207,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &375405707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6381714636896791862, guid: a170d1d26bdd09d418946fcc2aab3da3, type: 3}
+  m_PrefabInstance: {fileID: 1109123299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +457,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axe: {fileID: 8024493763116142589, guid: 668d9f34462cefe49a986990bd2cfe35, type: 3}
   isAttack: 0
+  attackTime: 1
+  startTimeAttack: 0.3
+  attackLocation: {fileID: 375405707}
+  attackRange: 0.19
+  enemies:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1270180711
 GameObject:
   m_ObjectHideFlags: 0
