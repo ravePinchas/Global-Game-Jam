@@ -10,6 +10,8 @@ public class PlayerMovment : MonoBehaviour
     Vector3 vec;
     private Transform playerTransform;
 
+    public RandomSound footSteps;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +41,9 @@ public class PlayerMovment : MonoBehaviour
 
         playerTransform.up = direction;
 
+        if (!(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0))
+        {
+            footSteps.PlayRandomSound();
+        }
     }
 }
