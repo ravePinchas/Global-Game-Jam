@@ -1,38 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerAbilitiesController : MonoBehaviour
 {
    [SerializeField] IAbility currentAbility = null;
-    
+    [SerializeField] public string currentAbilityName = null;
+
+
+    public int level = 1;
+
+
+
+
+    private void Start()
+    {
+
+        
+
+    }
 
     // Update is called once per frame
     void Update()
     {
+        level = FindObjectOfType<PlayerMovment>().level;
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            currentAbility = new IncreaseSpeed();
-            UseAbility();
+            useFreeze();
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            currentAbility = new FreezeEnemy();
-            UseAbility();
-        }
-
-
 
     }
 
 
 
+    public void HealMe()
+    {
+        currentAbility = new Heal();
+        
+        UseAbility();
+
+    }
+
+
+
+    public void useFreeze()
+    {
+        currentAbility = new FreezeEnemy();
+        currentAbilityName = "FreezeEnemy";
+        UseAbility();
+
+    }
+
+
+    public void increasePlayerSpeed()
+    {
+        currentAbility = new IncreaseSpeed();
+        currentAbilityName = "Increase Speed";
+
+        UseAbility();
+
+    }
+
+
     public void UseAbility()
     {
         currentAbility.Use();
+
+        
     }
 
 
@@ -45,7 +85,7 @@ public class PlayerAbilitiesController : MonoBehaviour
     {
         public void Use()
         {
-            UnityEngine.Debug.Log("Ability used");
+           // UnityEngine.Debug.Log("Ability used");
         }
     }
     
@@ -67,11 +107,25 @@ public class PlayerAbilitiesController : MonoBehaviour
             }
 
             UnityEngine.Debug.Log("IncreaseSpeed used");
-
+           
+          
 
 
         }
     }
+
+    public class Heal : MonoBehaviour, IAbility
+    {
+        public void Use()
+        {
+            UnityEngine.Debug.Log("Heal used");
+            PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
+            playerMovment.health = playerMovment.health + 50;
+
+        }
+    }
+
+
 
     public class FreezeEnemy : MonoBehaviour, IAbility
     {
