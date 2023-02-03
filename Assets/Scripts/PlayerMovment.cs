@@ -15,12 +15,15 @@ public class PlayerMovment : MonoBehaviour
 
     public RandomSound footSteps;
 
+    SpriteRenderer sp;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerTransform = GetComponent<Transform>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -41,7 +44,18 @@ public class PlayerMovment : MonoBehaviour
             mousePosition.y - playerTransform.position.y
         );
 
-        playerTransform.up = direction;
+        //check if the player is going left
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            sp.flipX = false;
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            sp.flipX = true;
+        }
+
+
+        //playerTransform.up = direction;
 
         if (!(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0))
         {
