@@ -10,6 +10,7 @@ public class AxeShooter : MonoBehaviour
     bool moveBack = false;
     bool startAxe = true;
     GameObject player;
+    [SerializeField] int axeDamage;
 
 
 
@@ -45,13 +46,28 @@ public class AxeShooter : MonoBehaviour
         }
     }
 
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (moveBack && collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
             player.GetComponent<PlayerAttack>().isAttack = false;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            
+            EnemyBehavior enemyBehaviour = FindObjectOfType<EnemyBehavior>();
+            enemyBehaviour.enemyInstance.hp -= axeDamage;
+
+            Debug.Log(enemyBehaviour.enemyInstance.hp);
+
+            if (enemyBehaviour.enemyInstance.hp <= 0)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

@@ -5,7 +5,19 @@ public class EnemyBehavior : MonoBehaviour
     public float speed = 5f; // adjust the speed of the enemy
     private Transform playerTransform;
     private Vector2 targetPosition;
-    public Enemy enemy;
+    public Enemy enemyPrefab;
+    
+    public Enemy enemyInstance;
+    private SpriteRenderer spriteRenderer;
+
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = enemyInstance.sprite;
+    }
+
+
 
     private void Update()
     {
@@ -18,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if (enemy.hp <= 0)
+        if (enemyInstance.hp <= 0)
         {
             Destroy(gameObject);
         }

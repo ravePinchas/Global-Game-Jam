@@ -13,7 +13,9 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         EnemyBehavior enemyBehaviour = newEnemy.GetComponent<EnemyBehavior>();
-        enemyBehaviour.enemy = enemy;
+        enemyBehaviour.enemyPrefab = enemy;
+
+        enemyBehaviour.enemyInstance = Instantiate(enemyBehaviour.enemyPrefab);
     }
 
 
