@@ -713,6 +713,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3834085663530818660, guid: a170d1d26bdd09d418946fcc2aab3da3, type: 3}
   m_PrefabInstance: {fileID: 1109123299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1131858097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131858099}
+  - component: {fileID: 1131858098}
+  m_Layer: 0
+  m_Name: AdvanceLevelCheat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1131858098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131858097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea55554ff6d35954385be3bdaf83e6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1131858099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131858097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.82268137, y: 0.87815475, z: 0.027699089}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270180711
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,12 +818,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3640399689216550471, guid: df97cdb4b0cb5f646b1724b683f5eb5a, type: 3}
-  enemy: {fileID: 11400000, guid: fa25393f24ec7fc43a96962eb3759c0a, type: 2}
+  enemies:
+  - {fileID: 11400000, guid: fa25393f24ec7fc43a96962eb3759c0a, type: 2}
   spawnPoints:
   - {fileID: 1270180712}
   - {fileID: 1030167280}
   - {fileID: 998836058}
   - {fileID: 1857638677}
+  isShooter: 0
   startSpawnTime: 0
   startSpawnRate: 1
   timeToReachMaxRateBeforeRoundEnd: 30
