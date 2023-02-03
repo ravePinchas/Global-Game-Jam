@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98025ba14e3ba3848aeceaa1909ce987
+guid: b4a6bb22ee6ce9d43a2fa38d7725420c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,7 +103,94 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: frost undead_0
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 16
+        width: 533
+        height: 784
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59faf6ba35637d748bed217f4a034c2e
+      internalID: -906827042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frost undead_1
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 16
+        width: 533
+        height: 784
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7941892cc6822845a0b5e1d697b37b0
+      internalID: -2139580559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frost undead_2
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 16
+        width: 533
+        height: 784
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -392}
+        - {x: 266.5, y: 0}
+        - {x: 0, y: 392}
+        - {x: -266.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf74e3c340e547846a947292074c924d
+      internalID: -1892385547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +201,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      frost undead_1: -2139580559
+      frost undead_2: -1892385547
+      frost undead_0: -906827042
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
