@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints;
 
     public bool isShooter = false;
+    public bool isGiant = false;
+    public bool isNormal = false;
     public float startSpawnTime = 0.0f;
     public float startSpawnRate = 1.0f;
     public float timeToReachMaxRateBeforeRoundEnd = 30.0f; // 30 seconds
@@ -26,6 +28,14 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         EnemyBehavior enemyBehaviour = newEnemy.GetComponent<EnemyBehavior>();
+        if (enemyTypeIndex == 0)
+        {
+            enemyBehaviour.isNormal = true;
+        }
+        if (enemyTypeIndex == 1)
+        {
+            enemyBehaviour.isGiant = true;
+        }
         if (enemyTypeIndex == 2)
         {
             enemyBehaviour.isShooter = true;

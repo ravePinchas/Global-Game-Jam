@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public float speed = 5f; // adjust the speed of the enemy
+    public float speed; // adjust the speed of the enemy
+    public float damage;
+
     private Transform playerTransform;
     private Vector2 targetPosition;
     public Enemy enemyPrefab;
@@ -12,13 +14,34 @@ public class EnemyBehavior : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] public GameObject xp;
 
+
     public bool isShooter = false;
+    public bool isGiant = false;
+    public bool isNormal = false;
 
     Stopwatch stopwatch = new Stopwatch();
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = enemyInstance.sprite;
+        if (isGiant)
+        {
+            speed = 3f;
+            damage = 15f;
+            enemyInstance.hp = 150;
+        }
+        if (isNormal)
+        {
+            speed = 5f;
+            damage = 10f;
+            enemyInstance.hp = 100;
+        }
+        if (isShooter)
+        {
+            speed = 5f;
+            damage = 15f;
+            enemyInstance.hp = 70;
+        }
     }
 
 
@@ -31,13 +54,20 @@ public class EnemyBehavior : MonoBehaviour
         float x = playerTransform.position.x + (Mathf.Round(transform.position.x - playerTransform.position.x) * 0.6f);
         float y = playerTransform.position.y + (Mathf.Round(transform.position.y - playerTransform.position.y) * 0.6f);
         targetPosition = new Vector2(x, y);
-
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
+        if(!isShooter)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        }
         if (isShooter)
         {
-            //check if distance between targetposition to transforposition is less then 5f
-
+            if (Vector2.Distance(transform.position, targetPosition) < 2f)
+            {
+                print("player in rang");
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            }
         }
     }
     
@@ -58,7 +88,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             UnityEngine.Debug.Log("Player hit");
             stopwatch.Reset();
-            FindObjectOfType<PlayerMovment>().health -= 10;
+            FindObjectOfType<PlayerMovment>().health -= damage;
         }
     }
 }
