@@ -37,23 +37,14 @@ public class PlayerAttack : MonoBehaviour
             isAttack = true;
         }
 
-
-
-
-
-
-
             if (Input.GetMouseButtonDown(1))
             {
                 //anim.SetBool("Is_attacking", true);
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, enemies);
 
-
-                Debug.Log("enter");
-
-
                 for (int i = 0; i < damage.Length; i++)
                 {
+                    Instantiate(damage[i].gameObject.GetComponent<EnemyBehavior>().xp, damage[i].gameObject.transform.position, Quaternion.identity);
                     Destroy(damage[i].gameObject);
                 }
             }

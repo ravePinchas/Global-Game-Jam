@@ -57,8 +57,6 @@ public class AxeShooter : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-
-            
             EnemyBehavior enemyBehaviour = FindObjectOfType<EnemyBehavior>();
             enemyBehaviour.enemyInstance.hp -= axeDamage;
 
@@ -66,6 +64,7 @@ public class AxeShooter : MonoBehaviour
 
             if (enemyBehaviour.enemyInstance.hp <= 0)
             {
+                Instantiate(collision.GetComponent<EnemyBehavior>().xp, transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
             }
         }

@@ -9,6 +9,7 @@ public class EnemyBehavior : MonoBehaviour
     
     public Enemy enemyInstance;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] public GameObject xp;
 
 
     private void Start()
@@ -18,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
 
-
+    
     private void Update()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
@@ -32,8 +33,9 @@ public class EnemyBehavior : MonoBehaviour
 
         if (enemyInstance.hp <= 0)
         {
-            Destroy(gameObject);
+            //instantiates the xp prefab
+            //Destroy(gameObject);
+        
         }
-
     }
 }
