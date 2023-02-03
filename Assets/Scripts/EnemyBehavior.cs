@@ -12,6 +12,8 @@ public class EnemyBehavior : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] public GameObject xp;
 
+    public bool isShooter = false;
+
     Stopwatch stopwatch = new Stopwatch();
     private void Start()
     {
@@ -32,14 +34,13 @@ public class EnemyBehavior : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if (enemyInstance.hp <= 0)
+        if (isShooter)
         {
-            //instantiates the xp prefab
-            //Destroy(gameObject);
-        
+            //check if distance between targetposition to transforposition is less then 5f
+
         }
     }
-
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
