@@ -18,8 +18,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isAttack)
         {
-            isAttack = true;
+            
             Instantiate(axe, transform.position, Quaternion.identity);
+            isAttack = true;
         }
         else if (Input.GetMouseButtonDown(1) && !isAttack)
         {
