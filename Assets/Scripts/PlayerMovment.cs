@@ -11,18 +11,16 @@ public class PlayerMovment : MonoBehaviour
     private Transform playerTransform;
     public float xp = 0f;
     public float health = 100f;
+    public int level = 1;
 
     public RandomSound footSteps;
 
-
-   [SerializeField] SpriteRenderer sp;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-             playerTransform = GetComponent<Transform>();
-        sp = GetComponent<SpriteRenderer>();
+        playerTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -35,7 +33,6 @@ public class PlayerMovment : MonoBehaviour
         transform.localPosition = vec;
 
 
-
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
@@ -44,20 +41,7 @@ public class PlayerMovment : MonoBehaviour
             mousePosition.y - playerTransform.position.y
         );
 
-
-        //check if the player is going left
-        if (Input.GetAxis("Horizontal") < 0)
-        {
-            sp.flipX = false;
-        }
-        else if (Input.GetAxis("Horizontal") > 0)
-        {
-            sp.flipX = true;
-        }
-
-
-
-        //playerTransform.up = direction;
+        playerTransform.up = direction;
 
         if (!(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0))
         {
@@ -72,7 +56,12 @@ public class PlayerMovment : MonoBehaviour
             {
                 Destroy(xp);
                 this.xp += 10;
-                
+                if (this.xp >= 100)
+                {
+                    this.xp = 0;
+                    level++;
+                    //TODO level up
+                }
             }
         }
     }
