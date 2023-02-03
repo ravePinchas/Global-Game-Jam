@@ -12,6 +12,7 @@ public class PlayerMovment : MonoBehaviour
     public float xp = 0f;
     public float health = 100f;
     public int level = 1;
+    private float xpAmount = 1f;
 
     public RandomSound footSteps;
 
@@ -69,11 +70,12 @@ public class PlayerMovment : MonoBehaviour
             if (Vector3.Distance(transform.position, xp.transform.position) < 2f)
             {
                 Destroy(xp);
-                this.xp += 10;
+                this.xp += 10 * xpAmount;
                 if (this.xp >= 100)
                 {
                     this.xp = 0;
                     level++;
+                    xpAmount *= 0.8f;
                     //TODO level up
                 }
             }
