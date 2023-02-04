@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
             {
                 changeLevel = true;
                 ++levelNumber;
+                timer.ResetStageTimer();
             }
             else
             {

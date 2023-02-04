@@ -46,8 +46,8 @@ public class GameTime : MonoBehaviour
             if (showTimerUI && timerUI != null)
             {
                 timerUI.SetActive(true);
-                float stageTimeMinutes = stageTimer / 60.0f;
-                float stageTimeSecs = stageTimer % 60.0f;
+                float stageTimeMinutes = gameTimer / 60.0f;
+                float stageTimeSecs = gameTimer % 60.0f;
                 timerUIText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(stageTimeMinutes), Mathf.FloorToInt(stageTimeSecs));
             }
             if (stageTimer >= stageEndTimer)
@@ -80,4 +80,11 @@ public class GameTime : MonoBehaviour
     {
         return GetGameObject().GetComponent<GameTime>();
     }
+
+    public void ResetStageTimer()
+    {
+        stageStartTime = Time.time;
+        stageTimer = 0.0f;
+    }
+
 }
