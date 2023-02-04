@@ -14,7 +14,7 @@ public class PlayerMovment : MonoBehaviour
     public float health = 100f;
     public int level = 1;
     public float xpAmount = 1f;
-
+    public float pickupRadius = 2f;
     public bool isLevelUp = false;
 
     public RandomSound footSteps;
@@ -76,7 +76,7 @@ public class PlayerMovment : MonoBehaviour
 
         foreach (GameObject xp in xps)
         {
-            if (Vector3.Distance(transform.position, xp.transform.position) < 2f)
+            if (Vector3.Distance(transform.position, xp.transform.position) < pickupRadius)
             {
                 Destroy(xp);
                 this.xp += 10 * xpAmount;

@@ -42,9 +42,11 @@ public class PlayerAbilitiesController : MonoBehaviour
         abilityList.Add(new IncreaseEXP());
         abilityList[3].SetAbility(3, "Increase EXP Gain", abIconsList[3]);
         abilityList.Add(new IncreaseMaxHP());
-        abilityList[4].SetAbility(3, "Increase Max HP", abIconsList[4]);
+        abilityList[4].SetAbility(4, "Increase Max HP", abIconsList[4]);
         abilityList.Add(new IncreaseAxeDamage());
-        abilityList[5].SetAbility(3, "Increase Axe Damage", abIconsList[5]);
+        abilityList[5].SetAbility(5, "Increase Axe Damage", abIconsList[5]);
+        abilityList.Add(new IncreaseAxeDamage());
+        abilityList[6].SetAbility(6, "Increase Axe Damage", abIconsList[6]);
 
     }
 
@@ -380,17 +382,19 @@ public class PlayerAbilitiesController : MonoBehaviour
 
 
 
-    public class IncreaseAxeSize : IAbility
+    public class IncreasePickupRadius : IAbility
     {
 
         public override void Use()
         {
 
 
+            PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
+
+            playerMovment.pickupRadius = playerMovment.pickupRadius + 1f;
 
 
-
-            UnityEngine.Debug.Log("IncreaseDamage for axe used");
+            UnityEngine.Debug.Log("Pickup radius  used");
 
         }
     }
