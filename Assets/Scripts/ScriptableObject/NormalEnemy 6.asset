@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6542224f5bb16a244b4acf61d89d98cf, type: 3}
-  m_Name: GiantEnemy
+  m_Name: NormalEnemy 6
   m_EditorClassIdentifier: 
-  hp: 150
-  attack: 10
-  sprite: {fileID: 21300000, guid: f618c5fe13b18994aa5aee8b97d8dca1, type: 3}
+  hp: 170
+  attack: 12
+  sprite: {fileID: -1743048509, guid: 207eb9e32b5c8f54ba4b7f0ba6643abb, type: 3}
