@@ -25,12 +25,12 @@ public class GameTime : MonoBehaviour
         // Should this be called by after clicking "Start" from a menu or something instead?
         GameStart();
 
-        timerUI = GameObject.Find("TimerUI");
-        int iChildren = timerUI.transform.childCount;
+ //       timerUI = GameObject.Find("TimerUI");
+ // int iChildren = timerUI.transform.childCount;
         //GameObject timerUITextGameObject = timerUI.transform.GetChild(0).gameObject;
         //timerUIText = timerUITextGameObject.GetComponent<TextMeshProUGUI>();
-        timerUIText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
-        timerUI.SetActive(false);
+      //  timerUIText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
+  //      timerUI.SetActive(false);
     }
 
     // Update is called once per frame

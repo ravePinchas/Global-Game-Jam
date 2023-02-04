@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, targetPosition) < 2f)
             {
-                print("player in rang");
+                //print("player in rang");
             }
             else
             {

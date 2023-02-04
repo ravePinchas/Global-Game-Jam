@@ -14,6 +14,8 @@ public class PlayerMovment : MonoBehaviour
     public int level = 1;
     private float xpAmount = 1f;
 
+    public bool isLevelUp = false;
+
     public RandomSound footSteps;
 
     SpriteRenderer sp;
@@ -75,6 +77,7 @@ public class PlayerMovment : MonoBehaviour
                 {
                     this.xp = 0;
                     level++;
+                    isLevelUp = true;
                     xpAmount *= 0.8f;
                     //TODO level up
                 }

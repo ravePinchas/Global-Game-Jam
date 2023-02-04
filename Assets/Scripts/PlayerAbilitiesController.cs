@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,19 +9,26 @@ using UnityEngine.UI;
 
 public class PlayerAbilitiesController : MonoBehaviour
 {
-   [SerializeField] IAbility currentAbility = null;
+    [SerializeField] IAbility currentAbility = null;
     [SerializeField] public string currentAbilityName = null;
 
+    [SerializeField] Button[] buttons;
 
     public int level = 1;
 
+    [SerializeField] GameObject canvas;
 
 
 
     private void Start()
     {
 
+
+        //set canvas position
         
+
+
+
 
     }
 
@@ -35,14 +43,71 @@ public class PlayerAbilitiesController : MonoBehaviour
             useFreeze();
         }
 
+        if (FindObjectOfType<PlayerMovment>().isLevelUp)
+        {
+            ShuffleAbilities();
+        }
+
+
+        if (FindObjectOfType<PlayerMovment>().isLevelUp)
+        {
+        
+
+        } 
+
     }
 
+    private void ShuffleAbilities()
+    {
 
+     
+
+        //shuffle the abilities on the buttons
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, buttons.Length);
+            Button temp = buttons[i];
+            buttons[i] = buttons[randomIndex];
+            buttons[randomIndex] = temp;
+        }
+
+        //set the abilities on the buttons
+        for (int i = 0; i < buttons.Length; i++)
+        {
+
+            UnityEngine.Debug.Log("ForLoop");
+
+            if (i == 0)
+            {
+                buttons[i].onClick.AddListener(HealMe);
+                buttons[i].name = "HealMe";
+                //change the name in the text
+
+                buttons[i].GetComponentInChildren<Text>().text = "HealMe";
+
+            }
+            else if (i == 1)
+            {
+                buttons[i].onClick.AddListener(useFreeze);
+                buttons[i].name = "Freeze Enemies";
+                buttons[i].GetComponentInChildren<Text>().text = "Freeze Enemies";
+            }
+            else if (i == 2)
+            {
+                buttons[i].onClick.AddListener(increasePlayerSpeed);
+                buttons[i].name = "Increase Speed";
+                buttons[i].GetComponentInChildren<Text>().text = "Increase Speed";
+            }
+        }
+        FindObjectOfType<PlayerMovment>().isLevelUp = false;
+    }
 
     public void HealMe()
     {
         currentAbility = new Heal();
+            UnityEngine.Debug.Log("heal");
         
+
         UseAbility();
 
     }
@@ -53,7 +118,11 @@ public class PlayerAbilitiesController : MonoBehaviour
     {
         currentAbility = new FreezeEnemy();
         currentAbilityName = "FreezeEnemy";
+        
+
+
         UseAbility();
+        UnityEngine.Debug.Log("freeze");
 
     }
 
@@ -62,6 +131,10 @@ public class PlayerAbilitiesController : MonoBehaviour
     {
         currentAbility = new IncreaseSpeed();
         currentAbilityName = "Increase Speed";
+       
+        ;
+
+        UnityEngine.Debug.Log("speed");
 
         UseAbility();
 
