@@ -255,6 +255,8 @@ MonoBehaviour:
   xp: 0
   health: 100
   level: 1
+  xpAmount: 1
+  isLevelUp: 0
   footSteps: {fileID: 1930236317739398175}
 --- !u!50 &3834085663530818665
 Rigidbody2D:
@@ -276,7 +278,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!61 &3834085663530818664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -351,6 +353,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef1a70bfe3f93548be55fbad4f5dcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCount: 10
+  currentAbilityName: 
+  powerUpScreen: {fileID: 0}
+  buttons: []
+  abIconsList: []
+  level: 1
+  canvas: {fileID: 0}
 --- !u!1 &3858941061992432541
 GameObject:
   m_ObjectHideFlags: 0

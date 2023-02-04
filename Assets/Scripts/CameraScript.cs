@@ -5,13 +5,15 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
 
-    [SerializeField] private Transform playerTransform;
+    private Transform playerTransform;
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        
+        playerTransform = PlayerMovment.playerInstance.transform;
+
+
+
+
     }
 
     // Update is called once per frame

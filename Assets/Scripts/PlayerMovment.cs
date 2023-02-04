@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovment : MonoBehaviour
 {
+    public static PlayerMovment playerInstance;
 
     Rigidbody2D rb;
     public float speed = 5f;
@@ -19,6 +20,12 @@ public class PlayerMovment : MonoBehaviour
     public RandomSound footSteps;
 
     SpriteRenderer sp;
+
+    void Awake()
+    {
+        playerInstance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
 
     // Start is called before the first frame update
