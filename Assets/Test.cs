@@ -15,11 +15,14 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void secondlevel()
     {
-        SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
+        //SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
     }
 }

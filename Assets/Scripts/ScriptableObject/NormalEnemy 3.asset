@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6542224f5bb16a244b4acf61d89d98cf, type: 3}
+  m_Name: NormalEnemy 3
+  m_EditorClassIdentifier: 
+  hp: 130
+  attack: 9
+  sprite: {fileID: -2139580559, guid: b4a6bb22ee6ce9d43a2fa38d7725420c, type: 3}

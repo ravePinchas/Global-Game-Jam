@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6542224f5bb16a244b4acf61d89d98cf, type: 3}
-  m_Name: ShooterEnemy
+  m_Name: ShooterEnemy 7
   m_EditorClassIdentifier: 
-  hp: 60
-  attack: 10
-  sprite: {fileID: 21300000, guid: 0da63bf69e254aa4a83c345c3de497c8, type: 3}
+  hp: 100
+  attack: 8
+  sprite: {fileID: -493864651, guid: 89f0a48ff80c8644c9e474783066cf94, type: 3}
