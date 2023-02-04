@@ -10,7 +10,7 @@ public class AxeShooter : MonoBehaviour
     bool moveBack = false;
     bool startAxe = true;
     GameObject player;
-    [SerializeField] int axeDamage;
+    [SerializeField]public int axeDamage;
 
 
 

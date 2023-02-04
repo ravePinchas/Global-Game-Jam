@@ -41,6 +41,11 @@ public class PlayerAbilitiesController : MonoBehaviour
         abilityList[2].SetAbility(2, "Freeze Enemies", abIconsList[2]);
         abilityList.Add(new IncreaseEXP());
         abilityList[3].SetAbility(3, "Increase EXP Gain", abIconsList[3]);
+        abilityList.Add(new IncreaseMaxHP());
+        abilityList[4].SetAbility(3, "Increase Max HP", abIconsList[4]);
+        abilityList.Add(new IncreaseAxeDamage());
+        abilityList[5].SetAbility(3, "Increase Axe Damage", abIconsList[5]);
+
     }
 
     // Update is called once per frame
@@ -342,5 +347,53 @@ public class PlayerAbilitiesController : MonoBehaviour
 
         }
     }
+
+    public class IncreaseMaxHP : IAbility
+    {
+
+        public override void Use()
+        {
+
+            PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
+
+            playerMovment.health *= (float)1.2;
+
+            UnityEngine.Debug.Log("IncreaseHP used");
+
+        }
+    }
+
+    public class IncreaseAxeDamage : IAbility
+    {
+
+        public override void Use()
+        {
+
+            AxeShooter axeShooter = FindObjectOfType<AxeShooter>();
+            
+            axeShooter.axeDamage = axeShooter.axeDamage + 10;
+
+            UnityEngine.Debug.Log("IncreaseDamage for axe used");
+
+        }
+    }
+
+
+
+    public class IncreaseAxeSize : IAbility
+    {
+
+        public override void Use()
+        {
+
+
+
+
+
+            UnityEngine.Debug.Log("IncreaseDamage for axe used");
+
+        }
+    }
+
 
 }
