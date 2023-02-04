@@ -25,12 +25,13 @@ public class GameTime : MonoBehaviour
         // Should this be called by after clicking "Start" from a menu or something instead?
         GameStart();
 
- //       timerUI = GameObject.Find("TimerUI");
- // int iChildren = timerUI.transform.childCount;
+        timerUI = GameObject.Find("TimerUI");
+        int iChildren = timerUI.transform.childCount;
         //GameObject timerUITextGameObject = timerUI.transform.GetChild(0).gameObject;
         //timerUIText = timerUITextGameObject.GetComponent<TextMeshProUGUI>();
-      //  timerUIText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
-  //      timerUI.SetActive(false);
+        timerUIText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
+        timerUI.SetActive(false);
+        stageEndTimer = stageTimeInMinutes * 60.0f;
     }
 
     // Update is called once per frame
@@ -48,6 +49,10 @@ public class GameTime : MonoBehaviour
                 float stageTimeMinutes = stageTimer / 60.0f;
                 float stageTimeSecs = stageTimer % 60.0f;
                 timerUIText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(stageTimeMinutes), Mathf.FloorToInt(stageTimeSecs));
+            }
+            if (stageTimer >= stageEndTimer)
+            {
+                MessagingSystem<IMsgStageEnd>.SendMessage();
             }
         }
     }
