@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IMsgStageEnd
 {
-    static string levelNamePrefix = "Level ";
+    [System.NonSerialized] public static string levelNamePrefix = "Level ";
 
     public bool advanceLevelCheatEnabled = true;
     public int maxLevelNumber = 7;
