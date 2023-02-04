@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
     public bool advanceLevelCheatEnabled = true;
     public int maxLevelNumber = 7;
 
+
     GameTime timer;
+
+    GameObject timerGameObject;
+    GameObject uiCanvasGameObject;
     GameObject player;
 
     // Start is called before the first frame update
@@ -22,6 +26,13 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
         if (timer == null) Debug.LogError("Couldn't get the game timer");
         player = GameObject.Find("Player");
         PlayerMovment.playerInstance.gameObject.GetComponent<PlayerAttack>().isAttack = false;
+
+        timerGameObject = GameTime.GetGameObject();
+        DontDestroyOnLoad(timerGameObject);
+        uiCanvasGameObject = GameObject.Find("UI Canvas");
+        DontDestroyOnLoad(uiCanvasGameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

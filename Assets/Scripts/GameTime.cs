@@ -71,8 +71,13 @@ public class GameTime : MonoBehaviour
         stageTimer = 0.0f;
     }
 
+    public static GameObject GetGameObject()
+    {
+        return GameObject.Find("Timer");
+    }
+
     public static GameTime GetTimer()
     {
-        return GameObject.Find("Timer").GetComponent<GameTime>();
+        return GetGameObject().GetComponent<GameTime>();
     }
 }

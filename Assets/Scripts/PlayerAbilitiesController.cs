@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerAbilitiesController : MonoBehaviour
 {
-    [SerializeField] int abilityCount = 10;
+    //[SerializeField] int abilityCount = 10;
     [SerializeField] List<IAbility> abilityList = new List<IAbility>();
     [SerializeField] IAbility currentAbility = null;
     [SerializeField] IAbility currentFirstAbility = null;
