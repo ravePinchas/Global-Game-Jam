@@ -31,6 +31,7 @@ public class GameTime : MonoBehaviour
         //timerUIText = timerUITextGameObject.GetComponent<TextMeshProUGUI>();
         timerUIText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
         timerUI.SetActive(false);
+        stageEndTimer = stageTimeInMinutes * 60.0f;
     }
 
     // Update is called once per frame
@@ -48,6 +49,10 @@ public class GameTime : MonoBehaviour
                 float stageTimeMinutes = stageTimer / 60.0f;
                 float stageTimeSecs = stageTimer % 60.0f;
                 timerUIText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(stageTimeMinutes), Mathf.FloorToInt(stageTimeSecs));
+            }
+            if (stageTimer >= stageEndTimer)
+            {
+                MessagingSystem<IMsgStageEnd>.SendMessage();
             }
         }
     }
