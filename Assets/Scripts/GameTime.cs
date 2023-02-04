@@ -9,12 +9,12 @@ public class GameTime : MonoBehaviour
     public float stageTimeInMinutes = 5.0f; // Each round is 5 minutes
 
     // Read only attributes (only display them in the Unity editor for debugging purposes)
-    [ReadOnly] public bool gameStarted = false;
-    [ReadOnly] public float gameStartTime;
-    [ReadOnly] public float gameTimer;
-    [ReadOnly] public float stageStartTime;
-    [ReadOnly] public float stageTimer;
-    [ReadOnly] public float stageEndTimer = 5.0f * 60.0f;
+    public bool gameStarted = false;
+   public float gameStartTime;
+    public float gameTimer;
+    public float stageStartTime;
+    public float stageTimer;
+    public float stageEndTimer = 5.0f * 60.0f;
 
     GameObject timerUI = null;
     TextMeshProUGUI timerUIText = null;
