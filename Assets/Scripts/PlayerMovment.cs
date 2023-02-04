@@ -90,5 +90,10 @@ public class PlayerMovment : MonoBehaviour
                 }
             }
         }
+
+        if (health <= 0)
+        {
+            MessagingSystem<IMsgPlayerDead>.SendMessage();
+        }
     }
 }

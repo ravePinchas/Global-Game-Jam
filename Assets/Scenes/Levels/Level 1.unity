@@ -789,6 +789,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 942848559950249429, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 885853191}
     - target: {fileID: 2519787190786120410, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -876,6 +880,22 @@ PrefabInstance:
     - target: {fileID: 2519787190786120414, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753676040950506583, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1030945427}
+    - target: {fileID: 3753676040950506583, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandlePlayAgain
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753676040950506583, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753676040950506583, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22e20e330cdbc2a4db40fb924de33a30, type: 3}
@@ -1467,7 +1487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef1a70bfe3f93548be55fbad4f5dcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCount: 10
   currentAbilityName: 
   powerUpScreen: {fileID: 1535538881}
   buttons:
@@ -2561,6 +2580,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &885853191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 741859580253290806, guid: 29e57d959be5ea441a6353edd4035d8d, type: 3}
+  m_PrefabInstance: {fileID: 1030945426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &896423186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,6 +2979,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e57d959be5ea441a6353edd4035d8d, type: 3}
+--- !u!114 &1030945427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 741859580253290809, guid: 29e57d959be5ea441a6353edd4035d8d, type: 3}
+  m_PrefabInstance: {fileID: 1030945426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885853191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f92243ab2c25814caf001e62546c950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1032840631
 GameObject:
   m_ObjectHideFlags: 0

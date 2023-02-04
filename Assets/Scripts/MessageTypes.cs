@@ -5,3 +5,4 @@ using UnityEngine;
 public interface IMsgGameStart : IMessageHandler { }
 public interface IMsgStageEnd : IMessageHandler { }
 public interface IMsgGameEnd : IMessageHandler { }
+public interface IMsgPlayerDead : IMessageHandler { }

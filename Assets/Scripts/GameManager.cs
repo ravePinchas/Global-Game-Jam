@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
     GameObject uiCanvasGameObject;
     GameObject player;
 
+    GameObject gameOverPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         MessagingSystem<IMsgStageEnd>.Subscribe(gameObject);
         MessagingSystem<IMsgGameEnd>.Subscribe(gameObject);
+        MessagingSystem<IMsgPlayerDead>.Subscribe(gameObject);
 
         timer = GameTime.GetTimer();
         if (timer == null) Debug.LogError("Couldn't get the game timer");
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
         DontDestroyOnLoad(uiCanvasGameObject);
 
         DontDestroyOnLoad(gameObject);
+
+        gameOverPanel = GameObject.Find("GameOverPanel");
+        gameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,9 +56,13 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
         {
             AdvanceLevel();
         }
-        if (msgType == typeof(IMsgGameEnd))
+        else if (msgType == typeof(IMsgGameEnd))
         {
             // #TODO: End game logic
+        }
+        else if (msgType == typeof(IMsgPlayerDead))
+        {
+            gameOverPanel.SetActive(true);
         }
     }
 
@@ -83,5 +93,19 @@ public class GameManager : MonoBehaviour, IMsgStageEnd
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(levelNamePrefix + levelNumber);
         }
+    }
+
+    public void HandlePlayAgain()
+    {
+        Destroy(timerGameObject);
+        Destroy(uiCanvasGameObject);
+        Destroy(player);
+        Destroy(gameObject);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(levelNamePrefix + 1);
+    }
+
+    public void HandleQuit()
+    {
+        Application.Quit();
     }
 }
