@@ -45,8 +45,8 @@ public class PlayerAbilitiesController : MonoBehaviour
         abilityList[4].SetAbility(4, "Increase Max HP", abIconsList[4]);
         abilityList.Add(new IncreaseAxeDamage());
         abilityList[5].SetAbility(5, "Increase Axe Damage", abIconsList[5]);
-        abilityList.Add(new IncreaseAxeDamage());
-        abilityList[6].SetAbility(6, "Increase Axe Damage", abIconsList[6]);
+        abilityList.Add(new IncreasePickupRadius());
+        abilityList[6].SetAbility(6, "Increase Pickup radius", abIconsList[6]);
 
     }
 
