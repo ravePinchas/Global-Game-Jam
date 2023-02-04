@@ -6,13 +6,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class PlayerAbilitiesController : MonoBehaviour
 {
+    [SerializeField] int abilityCount = 10;
+    [SerializeField] List<IAbility> abilityList = new List<IAbility>();
     [SerializeField] IAbility currentAbility = null;
+    [SerializeField] IAbility currentFirstAbility = null;
+    [SerializeField] IAbility currentSecondAbility = null;
+    [SerializeField] IAbility currentThirdAbility = null;
     [SerializeField] public string currentAbilityName = null;
 
+    [SerializeField] GameObject powerUpScreen;
     [SerializeField] Button[] buttons;
+    [SerializeField] Sprite[] abIconsList;
+    List<Ability> abilities = new List<Ability>();
 
     public int level = 1;
 
@@ -22,14 +29,18 @@ public class PlayerAbilitiesController : MonoBehaviour
 
     private void Start()
     {
-
-
         //set canvas position
-        
 
 
-
-
+        // Initialize Abilities
+        abilityList.Add(new IncreaseSpeed());
+        abilityList[0].SetAbility(0, "Increase Speed", abIconsList[0]);
+        abilityList.Add(new Heal());
+        abilityList[1].SetAbility(1, "Heal Me", abIconsList[1]);
+        abilityList.Add(new FreezeEnemy());
+        abilityList[2].SetAbility(2, "Freeze Enemies", abIconsList[2]);
+        abilityList.Add(new IncreaseEXP());
+        abilityList[3].SetAbility(3, "Increase EXP Gain", abIconsList[3]);
     }
 
     // Update is called once per frame
@@ -45,7 +56,10 @@ public class PlayerAbilitiesController : MonoBehaviour
 
         if (FindObjectOfType<PlayerMovment>().isLevelUp)
         {
-            ShuffleAbilities();
+            powerUpScreen.SetActive(true);
+            //ShuffleAbilities();
+            SetRandomPowerButtons();
+            Time.timeScale = 0f;
         }
 
 
@@ -56,6 +70,44 @@ public class PlayerAbilitiesController : MonoBehaviour
         } 
 
     }
+
+    private void SetRandomPowerButtons()
+    {
+        int firstPower = UnityEngine.Random.Range(0, abilityList.Count);
+        int secondPower = UnityEngine.Random.Range(0, abilityList.Count);
+        int thirdPower = UnityEngine.Random.Range(0, abilityList.Count);
+
+        while (secondPower == firstPower)
+            secondPower = UnityEngine.Random.Range(0, abilityList.Count);
+        while (thirdPower == firstPower || thirdPower == secondPower)
+            thirdPower = UnityEngine.Random.Range(0, abilityList.Count);
+
+        UnityEngine.Debug.Log("firstPower = " + firstPower);
+        UnityEngine.Debug.Log("secondPower = " + secondPower);
+        UnityEngine.Debug.Log("thirdPower = " + thirdPower);
+
+        currentFirstAbility = abilityList[firstPower];
+        currentSecondAbility = abilityList[secondPower];
+        currentThirdAbility = abilityList[thirdPower];
+
+        buttons[0].onClick.AddListener(UseFirstAbility);
+        buttons[0].name = currentFirstAbility.abName;
+        buttons[0].GetComponentInChildren<Text>().text = currentFirstAbility.abName;
+        buttons[0].transform.Find("Icon").GetComponent<Image>().sprite = abIconsList[firstPower];
+
+        buttons[1].onClick.AddListener(UseSecondAbility);
+        buttons[1].name = currentSecondAbility.abName;
+        buttons[1].GetComponentInChildren<Text>().text = currentSecondAbility.abName;
+        buttons[1].transform.Find("Icon").GetComponent<Image>().sprite = abIconsList[secondPower];
+
+        buttons[2].onClick.AddListener(UseThirdAbility);
+        buttons[2].name = currentThirdAbility.abName;
+        buttons[2].GetComponentInChildren<Text>().text = currentThirdAbility.abName;
+        buttons[2].transform.Find("Icon").GetComponent<Image>().sprite = abIconsList[thirdPower];
+
+        FindObjectOfType<PlayerMovment>().isLevelUp = false;
+    }
+
 
     private void ShuffleAbilities()
     {
@@ -105,7 +157,7 @@ public class PlayerAbilitiesController : MonoBehaviour
     public void HealMe()
     {
         currentAbility = new Heal();
-            UnityEngine.Debug.Log("heal");
+        UnityEngine.Debug.Log("heal");
         
 
         UseAbility();
@@ -144,29 +196,63 @@ public class PlayerAbilitiesController : MonoBehaviour
     public void UseAbility()
     {
         currentAbility.Use();
+        powerUpScreen.SetActive(false);
+    }
 
-        
+    public void UseFirstAbility()
+    {
+        currentFirstAbility.Use();
+        powerUpScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void UseSecondAbility()
+    {
+        currentSecondAbility.Use();
+        powerUpScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void UseThirdAbility()
+    {
+        currentThirdAbility.Use();
+        powerUpScreen.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 
-    public interface IAbility
+    public class IAbility
     {
-        void Use();
+        public int abNum;
+        public string abName;
+        public Sprite abIcon;
+
+        public void SetAbility(int num, string name, Sprite icon)
+        {
+            abNum = num;
+            abName = name;
+            abIcon = icon;
+        }
+
+        public virtual void Use()
+        {
+        }
     }
 
     public class Ability : IAbility
     {
-        public void Use()
+
+        public override void Use()
         {
            // UnityEngine.Debug.Log("Ability used");
         }
     }
     
-    public class IncreaseSpeed : MonoBehaviour, IAbility
+    public class IncreaseSpeed : IAbility
     {
-        public void Use()
-        {
 
+        public override void Use()
+        {
 
             PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
 
@@ -181,15 +267,13 @@ public class PlayerAbilitiesController : MonoBehaviour
 
             UnityEngine.Debug.Log("IncreaseSpeed used");
            
-          
-
 
         }
     }
 
-    public class Heal : MonoBehaviour, IAbility
+    public class Heal : IAbility
     {
-        public void Use()
+        public override void Use()
         {
             UnityEngine.Debug.Log("Heal used");
             PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
@@ -200,9 +284,9 @@ public class PlayerAbilitiesController : MonoBehaviour
 
 
 
-    public class FreezeEnemy : MonoBehaviour, IAbility
+    public class FreezeEnemy :  IAbility
     {
-        public void Use()
+        public override void Use()
         {
 
             Stopwatch stopwatch = new Stopwatch();
@@ -239,11 +323,22 @@ public class PlayerAbilitiesController : MonoBehaviour
 
            
 
-            UnityEngine.Debug.Log("FreezeEnemy used");
+            UnityEngine.Debug.Log("FreezeEnemy used"); 
 
-      
-            
-           
+        }
+    }
+
+    public class IncreaseEXP : IAbility
+    {
+
+        public override void Use()
+        {
+
+            PlayerMovment playerMovment = FindObjectOfType<PlayerMovment>();
+
+            playerMovment.xpAmount *= (float)1.1;
+
+            UnityEngine.Debug.Log("IncreaseEXP used");
 
         }
     }

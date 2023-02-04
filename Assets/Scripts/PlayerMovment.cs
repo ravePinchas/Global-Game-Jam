@@ -12,7 +12,7 @@ public class PlayerMovment : MonoBehaviour
     public float xp = 0f;
     public float health = 100f;
     public int level = 1;
-    private float xpAmount = 1f;
+    public float xpAmount = 1f;
 
     public bool isLevelUp = false;
 
