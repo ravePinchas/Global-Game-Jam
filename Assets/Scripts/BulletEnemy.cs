@@ -7,6 +7,7 @@ public class BulletEnemy : MonoBehaviour
     private Transform playerTransform;
     private Vector2 targetPosition;
     public float bulletSpeed = 15f;
+    public float damage = 15f;
 
     void Start()
     {
@@ -31,9 +32,12 @@ public class BulletEnemy : MonoBehaviour
         //rb.AddForce(bulletDirection * bulletSpeed - rb.velocity);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerMovment>().health -= damage;
+            Destroy(gameObject);
+        }
     }
 }
